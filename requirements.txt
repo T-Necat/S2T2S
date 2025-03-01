@@ -1,0 +1,15 @@
+# ------------------------------------------------------------
+# Requirements for Audio Transcription and Summarization Pipeline
+# Python 3.8+ compatible
+# Note: Install FFmpeg separately from https://ffmpeg.org/download.html
+# ------------------------------------------------------------
+
+# Core dependencies
+transformers>=4.0.0
+torch>=1.7.0
+pydub>=0.25.1
+ffmpeg-python>=0.2.0
+
+# Optional dependencies
+# numpy>=1.18.0
+# scipy>=1.5.0
