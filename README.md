@@ -1,4 +1,5 @@
 # Audio-Text Conversion and Summary System
+🐍 Python | 🤖 Whisper | 🦙 Ollama | 🎵 Audio Processing
 
 This project is a Python application that converts audio files to text and then summarizes the text. It creates intelligent summaries from audio files using OpenAI Whisper and Ollama.
 
@@ -16,26 +17,24 @@ This project is a Python application that converts audio files to text and then 
 - CUDA compatible GPU (optional)
 - Ollama
 
-### Python Libraries
-```
-transformers
-torch
-pydub
-```
+The project includes a `requirements.txt` file with all necessary Python dependencies. You can install them using pip.
 
 ## 🛠️ Installation
 1. Clone the project:
 ```bash
 git clone [repo-url]
 ```
+
 2. Install the required Python packages:
 ```bash
-pip install transformers torch pydub
+pip install -r requirements.txt
 ```
+
 3. Install FFmpeg:
 - macOS: `brew install ffmpeg`
 - Ubuntu: `sudo apt-get install ffmpeg`
 - Windows: [FFmpeg website](https://ffmpeg.org/download.html)
+
 4. Install and start Ollama:
 ```bash
 # For Ollama installation: https://ollama.ai/
@@ -57,6 +56,7 @@ python main.py
 my_school_project/
 │
 ├── main.py 
+├── requirements.txt
 ├── source/ 
 │ ├── input_audio.m4a 
 │ └── resoult_text/ 
@@ -67,6 +67,7 @@ my_school_project/
 
 ## ⚠️ Notes
 - GPU will be automatically detected and used when available
+- You can change the Ollama model according to your computer power or model preference
 - Large audio files are automatically divided into 5-minute segments
 - Contains automatic cleaning mechanisms for memory management
 - When running on Windows, you may need to set the `KMP_DUPLICATE_LIB_OK=TRUE` environment variable
