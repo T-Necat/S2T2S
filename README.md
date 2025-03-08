@@ -1,7 +1,7 @@
-# Audio-Text Conversion and Summary System
+# Sound-Text Conversion and Summary System
 🐍 Python | 🤖 Whisper | 🦙 Ollama | 🎵 Audio Processing
 
-This project is a Python application that converts audio files to text and then summarizes the text. It creates intelligent summaries from audio files using OpenAI Whisper and Ollama.
+This project is a Python application that converts sound files to text and then summarizes the text. It creates intelligent summaries from audio files using OpenAI Whisper and Ollama.
 
 ## 🚀 Features
 - Converting M4A format audio files to WAV format
