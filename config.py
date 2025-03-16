@@ -2,8 +2,8 @@ import os
 import locale
 import sys
 
-APP_NAME = "Ses Transkripsiyon ve Özetleme Aracı"
-VERSION = "1.2.0"
+APP_NAME = "Sound-Text Conversion and Summary System"
+VERSION = "1.3"
 
 SUMMARY_TIMEOUT = 600  
 SUMMARY_FALLBACK_TIMEOUT = 180 

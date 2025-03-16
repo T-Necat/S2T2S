@@ -2,20 +2,21 @@
 
 🐍 Python | 🤖 Whisper | 🦙 Ollama | 🎵 Audio Processing
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue)
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-The Sound-Text Conversion and Summary System is a comprehensive solution that converts audio recordings to text and summarizes the content using artificial intelligence. Easily upload audio files in various formats, obtain accurate and detailed transcriptions, and quickly grasp the essential points of the content through AI-powered intelligent summarization.
+The Sound-Text Conversion and Summary System (S2T2S) is a comprehensive solution that converts audio recordings to text and summarizes the content using artificial intelligence. Easily upload audio files in various formats, obtain accurate and detailed transcriptions, and quickly grasp the essential points of the content through AI-powered intelligent summarization.
 
 ## 📋 Features
 
 - **Multi-Format Support**: Process audio files in M4A, MP3, and WAV formats
 - **High-Accuracy Transcription**: Advanced speech recognition using the OpenAI Whisper large-v3-turbo model
 - **Intelligent Summarization System**: Two-tier summarization (deepseek-r1:32b and llama3:8b)
-- **Automatic Language Detection**: Detects the language of the transcription for appropriate summarization (currently supports English and Turkish only)
+- **Automatic Language Detection**: Detects the language of the transcription for appropriate summarization (currently supports English and Turkish)
 - **Concept Extraction**: Automatically extracts important terms and concepts from the text
-- **User-Friendly Interface**: Intuitive web interface designed with Streamlit
+- **Enhanced User Interface**: Significantly improved web interface designed with Streamlit
+- **Multi-language Support**: Full interface available in both English and Turkish
 - **Progress Tracking**: Real-time process status and progress indicators
 - **Result Management**: Automatic saving of all transcriptions and summaries
 - **Long Audio File Support**: Automatic segmentation of large audio files
@@ -33,8 +34,8 @@ The project comes with a `requirements.txt` file containing all necessary Python
 
 1. Clone the project:
 ```bash
-git clone [repo-url]
-cd audio-transcription-summary
+git clone https://github.com/T-Necat/S2T2S.git
+cd S2T2S
 ```
 
 2. Install the required Python packages:
@@ -62,6 +63,7 @@ streamlit run app.py
 ```
 
 2. In the web interface that automatically opens in your browser:
+   - Select your preferred language (English or Turkish)
    - Upload your audio file (M4A, MP3, or WAV) from the left menu
    - Click the "Start Process" button
    - Monitor progress using the progress bar during processing
@@ -74,21 +76,22 @@ streamlit run app.py
 ## 🗂️ Project Structure
 
 ```
-audio_transcription_app/
+S2T2S/
 │
-├── app.py                  # Main Streamlit application
-├── config.py               # Configuration settings
-├── requirements.txt        # Dependencies
+├── app.py                         # Main Streamlit application
+├── config.py                      # Configuration settings
+├── requirements.txt               # Dependencies
 │
 ├── modules/
-│   ├── audio_processor.py  # Audio conversion and segmentation
-│   ├── transcriber.py      # Speech-to-text conversion (Whisper)
-│   ├── summarizer.py       # Text summarization (Ollama)
-│   └── utils.py            # Helper functions
+│   ├── audio_processor.py         # Audio conversion and segmentation
+│   ├── transcriber.py             # Speech-to-text conversion (Whisper)
+│   ├── summarizer.py              # Text summarization (Ollama)
+│   ├── language.py                # Multi-language support
+│   └── utils.py                   # Helper functions
 │
-└── data/                   # Storage for processed files
-    ├── temp/               # Temporary files
-    └── results/            # Result files
+└── data/                          # Storage for processed files
+    ├── temp/                      # Temporary files
+    └── results/                   # Result files
 ```
 
 ## ⚠️ Important Notes
@@ -107,15 +110,14 @@ audio_transcription_app/
 - Ensure the Ollama service is running for connection errors (verify with the `ollama list` command)
 - If you receive insufficient summaries, increase the `SUMMARY_TIMEOUT` value in the `config.py` file
 
-## 🔄 Update Notes (v1.2.0)
+## 🔄 Update Notes (v1.3.0)
 
-- Transition from command-line interface to Streamlit web interface
-- Added automatic language detection feature (English and Turkish)
-- Implemented two-tier summarization system (primary and fallback models)
-- Improved memory management and error handling mechanisms
-- Added real-time progress tracking during processing
-- Added automatic extraction of important concepts
-- Provided option to download results directly from the application
+- Added complete multi-language support for the user interface (English and Turkish)
+- Implemented a language switcher in the sidebar for seamless language changes
+- Redesigned the user interface with improved styling and organization
+- Enhanced process monitoring with detailed status updates
+- Added ability to stop ongoing processes
+- Restructured the code for better maintainability
 
 ## 🔒 System Requirements
 
