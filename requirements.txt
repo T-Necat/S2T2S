@@ -5,10 +5,11 @@
 # ------------------------------------------------------------
 
 # Core dependencies
-transformers>=4.0.0
-torch>=1.7.0
+streamlit>=1.29.0
+torch>=2.0.0
+transformers>=4.35.0
 pydub>=0.25.1
-ffmpeg-python>=0.2.0
+python-dotenv>=1.0.0
 
 # Optional dependencies
 # numpy>=1.18.0
