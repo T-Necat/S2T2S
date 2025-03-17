@@ -8,7 +8,7 @@
 
 The Sound-Text Conversion and Summary System (S2T2S) is a comprehensive solution that converts audio recordings to text and summarizes the content using artificial intelligence. Easily upload audio files in various formats, obtain accurate and detailed transcriptions, and quickly grasp the essential points of the content through AI-powered intelligent summarization.
 
-[S2T2S DEMO ](https://github.com/T-Necat/S2T2S/blob/main/S2T2S_DEMO.gif)
+![S2T2S DEMO ](S2T2S_DEMO.gif)
 
 ## 📋 Features
 
