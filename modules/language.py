@@ -54,7 +54,15 @@ LANGUAGES = {
         "transcription_file": "📄 Transkripsiyon Dosyası",
         "summary_file": "📄 Özet Dosyası",
         "files_stored_info": "Dosyalar '{}' dizininde saklanıyor.",
-        "select_language": "Dil Seçimi"
+        "select_language": "Dil Seçimi",
+        "summary_options": "Özet Seçenekleri",
+        "select_summary_mode": "Özet modunu seçin",
+        "basic_mode": "Temel Özet",
+        "enhanced_mode": "Gelişmiş Özet (Daha uzun sürer)",
+        "summary_mode_help": "Gelişmiş özet daha kapsamlı ve detaylı, ancak 2 kat daha uzun sürer.",
+        "basic_summarizing": "🔄 Temel özet oluşturuluyor...",
+        "enhanced_summarizing": "🧠 Gelişmiş özet oluşturuluyor (bu işlem daha uzun sürebilir)..."
+
     },
     "en": {
         "app_title": "S2T2S",
@@ -111,7 +119,14 @@ LANGUAGES = {
         "transcription_file": "📄 Transcription File",
         "summary_file": "📄 Summary File",
         "files_stored_info": "Files are stored in the '{}' directory.",
-        "select_language": "Language Selection"
+        "select_language": "Language Selection",
+        "summary_options": "Summary Options",
+        "select_summary_mode": "Select summary mode",
+        "basic_mode": "Basic Summary",
+        "enhanced_mode": "Enhanced Summary (Takes longer)",
+        "summary_mode_help": "Enhanced summary is more comprehensive and detailed, but takes twice as long.",
+        "basic_summarizing": "🔄 Creating basic summary...",
+        "enhanced_summarizing": "🧠 Creating enhanced summary (this may take longer)..."
     }
 }
 

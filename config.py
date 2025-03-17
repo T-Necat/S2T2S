@@ -3,9 +3,10 @@ import locale
 import sys
 
 APP_NAME = "Sound-Text Conversion and Summary System"
-VERSION = "1.3"
+VERSION = "1.4"
 
-SUMMARY_TIMEOUT = 600  
+SUMMARY_TIMEOUT_BASIC = 600  
+SUMMARY_TIMEOUT_ENHANCED = 1200  
 SUMMARY_FALLBACK_TIMEOUT = 180 
 
 SYSTEM_ENCODING = locale.getpreferredencoding() 

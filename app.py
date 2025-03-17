@@ -8,7 +8,7 @@ from modules.transcriber import Transcriber
 from modules.summarizer import Summarizer
 from modules.utils import setup_logging, save_results, clean_memory, get_timestamp
 from modules.language import LANGUAGES, get_text
-from config import SUMMARY_CHUNK_SIZE, SUMMARY_MODEL_PRIMARY, SUMMARY_MODEL_FALLBACK, RESULT_DIR, APP_NAME, SUMMARY_TIMEOUT, VERSION, DATA_DIR
+from config import SUMMARY_CHUNK_SIZE, SUMMARY_MODEL_PRIMARY, SUMMARY_MODEL_FALLBACK, RESULT_DIR, APP_NAME, VERSION, DATA_DIR
 import os
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -152,6 +152,22 @@ with st.sidebar:
         """
         st.markdown(file_details, unsafe_allow_html=True)
     
+    # Özet seçenekleri bölümünü ekle
+    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+    st.subheader(get_lang_text("summary_options"))
+    
+    summary_mode = st.radio(
+        get_lang_text("select_summary_mode"),
+        options=["basic", "enhanced"],
+        format_func=lambda x: get_lang_text(f"{x}_mode"),
+        index=0,
+        help=get_lang_text("summary_mode_help")
+    )
+    
+    # Gelişmiş mod seçilirse bilgi mesajı göster
+    if summary_mode == "enhanced":
+        st.info(get_lang_text("enhanced_mode_info"))
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -259,7 +275,6 @@ if uploaded_file and st.session_state.process_running and not st.session_state.p
             if st.session_state.stop_requested:
                 raise Exception(get_lang_text("process_stopped"))
                 
-            status_text.markdown(f"**{get_lang_text('summarizing')}**")
             progress_bar.progress(60)
 
             try:
@@ -267,13 +282,16 @@ if uploaded_file and st.session_state.process_running and not st.session_state.p
                 
                 if st.session_state.stop_requested:
                     raise Exception(get_lang_text("process_stopped"))
-                    
-                status_text.markdown(f"**{get_lang_text('summarizing_model').format(SUMMARY_MODEL_PRIMARY)}**")
-                progress_bar.progress(70)
                 
-                summary = summarizer.create_summary_with_key_concepts(
-                    text=transcription,
-                    timeout=SUMMARY_TIMEOUT
+                
+                if summary_mode == "enhanced":
+                    status_text.markdown(f"**{get_lang_text('enhanced_summarizing')}**")
+                else:
+                    status_text.markdown(f"**{get_lang_text('basic_summarizing')}**")
+                
+                summary = summarizer.summarize_text(
+                    transcription=transcription,
+                    mode=summary_mode,
                 )
                 
                 if summary and len(summary) > 200:
