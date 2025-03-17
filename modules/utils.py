@@ -11,7 +11,6 @@ from config import RESULT_DIR
 logger = logging.getLogger(__name__)
 
 def setup_logging():
-    """Loglama ayarlarını yapılandırır."""
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -20,7 +19,6 @@ def setup_logging():
             logging.FileHandler(os.path.join(RESULT_DIR, f"log_{datetime.now().strftime('%Y%m%d')}.txt"))
         ]
     )
-    # Uyarı mesajlarını sustur
     logging.getLogger("transformers").setLevel(logging.ERROR)
     logging.getLogger("torch").setLevel(logging.ERROR)
 
@@ -29,8 +27,7 @@ def get_timestamp() -> str:
     return datetime.now().strftime("%H_%M_%d_%m_%Y")
 
 def save_results(transcription: str, summary: str, file_base_name: str = None) -> Tuple[str, str]:
-    """Transkripsiyon ve özet sonuçlarını kaydeder.
-    
+    """
     Args:
         transcription: Kaydedilecek transkripsiyon metni
         summary: Kaydedilecek özet metni
@@ -63,7 +60,6 @@ def save_results(transcription: str, summary: str, file_base_name: str = None) -
 
 
 def kill_stalled_processes(process_name="ollama"):
-    """Askıda kalmış süreçleri sonlandırır."""
     try:
         if os.name == 'nt':
             os.system(f'taskkill /f /im {process_name}.exe')
@@ -74,7 +70,6 @@ def kill_stalled_processes(process_name="ollama"):
         logger.warning(f"Süreç temizleme başarısız: {e}")
 
 def ensure_ollama_running():
-    """Ollama servisinin çalıştığından emin olur."""
     try:
         result = subprocess.run(
             ["ollama", "list"], 
@@ -93,7 +88,6 @@ def ensure_ollama_running():
         return False
 
 def monitor_process_with_timeout(func, args=None, kwargs=None, timeout=180):
-    """Bir işlemi belirli bir zaman aşımıyla izler ve periyodik olarak durum günceller."""
     import threading
     
     if args is None:
@@ -154,6 +148,5 @@ def monitor_process_with_timeout(func, args=None, kwargs=None, timeout=180):
     }
 
 def clean_memory():
-    """Bellek temizleme işlemi yapar."""
     gc.collect()
     logger.info("Bellek temizlendi")
