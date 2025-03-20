@@ -1,10 +1,11 @@
 # Sound-Text Conversion and Summary System
 
-🐍 Python | 🤖 Whisper | 🦙 Ollama | 🎵 Audio Processing
+🐍 Python | 🤖 Whisper | 🦙 Ollama | 🎵 Audio Processing | 🐳 Docker
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.2-blue)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue)
 
 The Sound-Text Conversion and Summary System (S2T2S) is a comprehensive solution that converts audio recordings to text and summarizes the content using artificial intelligence. Easily upload audio files in various formats, obtain accurate and detailed transcriptions, and quickly grasp the essential points of the content through AI-powered intelligent summarization.
 
@@ -22,31 +23,34 @@ The Sound-Text Conversion and Summary System (S2T2S) is a comprehensive solution
 - **Comprehensive Result Management**: Automatic saving and organization of all results
 - **Enhanced User Interface**: Streamlined Streamlit interface with improved accessibility
 - **Model Flexibility**: Use any Ollama-compatible model for summarization by adjusting configuration settings
+- **Docker Integration**: Easy deployment using pre-built Docker images
 
 ## Enhanced Summarization System
 
-The enhanced summarization mode represents a significant advancement over basic summarization, delivering comprehensive, high-quality summaries through a sophisticated multi-stage process:
+S2T2S offers two summarization modes to meet different needs:
 
-1. **Multi-Model Pipeline Processing**: 
-   - Primary model (deepseek-r1:32b) creates an initial detailed summary
-   - Secondary model (llama3:8b) performs specialized enhancement tasks
-   - Iterative refinement with both models for optimal quality
+- **Basic Mode**: Provides quick, concise summaries of audio content suitable for general use with minimal computational requirements.
+- **Enhanced Mode**: Delivers comprehensive, high-quality analysis with concept extraction, relationship mapping, and domain-specific insights using a sophisticated multi-model pipeline.
 
-2. **Advanced Content Analysis**:
-   - Automatic key concept extraction and terminology identification
-   - Relationship mapping between concepts with detailed definitions
-   - Domain recognition and specialized content treatment
-   - Quality evaluation with targeted improvements for weak sections
+## 🐳 Docker Integration
 
-3. **Practical Advantages**:
-   - Transforms hours of audio content into concise, structured summaries in minutes
-   - Preserves technical accuracy while improving readability
-   - Maintains contextual relationships between concepts
-   - Produces summaries with professional organization and academic quality
+The system is available as a Docker image with optimized smaller models for easier deployment:
 
-The enhanced mode is particularly valuable for educational content, technical discussions, and professional presentations where comprehensive understanding of complex relationships between concepts is essential. This sophisticated system effectively transforms what would typically be hours of reading and analysis into a streamlined, efficient process that delivers the essential content in a fraction of the time.
+```bash
+# Pull the image
+docker pull topraknecat/s2t2s_v1
 
-While the basic mode offers quick summaries suitable for general content, the enhanced mode provides a level of depth and analysis that approaches expert-level understanding, making it ideal for professional and academic applications where thorough comprehension is critical.
+# Run the container
+docker run -p 8501:8501 topraknecat/s2t2s_v1
+
+# With persistent data storage
+docker run -p 8501:8501 -v $(pwd)/data:/app/data topraknecat/s2t2s_v1
+
+# With GPU support
+docker run --gpus all -p 8501:8501 topraknecat/s2t2s_v1
+```
+
+Access the application in your browser at `http://localhost:8501`.
 
 ## 📋 Requirements
 
@@ -133,6 +137,7 @@ S2T2S/
 - When running on Windows, you may need to set the `KMP_DUPLICATE_LIB_OK=TRUE` environment variable
 - Language detection currently supports English and Turkish
 - You can use any Ollama-compatible model by modifying the model names in `config.py`
+- The Docker image is optimized to work with smaller models for better performance on standard hardware
 
 ## 🔍 Troubleshooting
 
@@ -142,9 +147,11 @@ S2T2S/
 - If summaries are insufficient, you can increase timeout values in `config.py`
 - If enhanced summaries fail, the system will automatically fall back to basic mode
 - If you want to use different models, ensure they are first downloaded with `ollama pull [model-name]`
+- For Docker-related issues, ensure you have the latest Docker version installed
 
-## 🔄 Update Notes (v1.4.0)
+## 🔄 Update Notes (v1.4.2)
 
+- **Docker Support**: Added Docker image for easy deployment and usage
 - **New Summarization Modes**: Added options for basic and enhanced summarization
 - **Improved Summary Quality**: Enhanced summarization now includes:
   - Section-by-section enhancement with relevant content analysis
@@ -168,6 +175,7 @@ S2T2S/
 - **Minimum**: 8GB RAM, 4-core CPU, 10GB disk space
 - **Recommended**: 16GB RAM, 8-core CPU, CUDA compatible GPU (4GB+ VRAM), 20GB disk space
 - **Enhanced Summary Mode**: 16GB+ RAM, dedicated GPU with 8GB+ VRAM recommended
+- **Docker Usage**: Docker Engine 19.03+, 4GB RAM minimum, 5GB free disk space
 
 ## 📄 License
 
@@ -180,4 +188,3 @@ We welcome your contributions. Please feel free to fork and submit pull requests
 ---
 
 Last Updated: March 2025
-
